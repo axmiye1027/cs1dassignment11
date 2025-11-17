@@ -10,3 +10,4 @@ Distance from Denver to Atlanta = 1463
 Distance from Denver to Miami = 2124
 Distance from Denver to New York = 1221
 Distance from Denver to Boston = 1435
+Final path: Denver, Kansas City, Chicago, San Francisco, Los Angeles, Seattle, Houston, Dallas, Atlanta, Miami, New York, Boston 
