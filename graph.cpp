@@ -67,18 +67,35 @@ void Graph::dijkstra(int start)
                     dist[u] + weight < dist[v])      // relaxation condition
                 {
                     dist[v] = dist[u] + weight;      // update shortest distance
-                    parent[v] = u;                   // store path
+                    parent[v] = u;                   // store path (current shortest)
                 }
             }
         }
     }
 
     cout << left;
-    // OPTIONAL: Print distances
+
+    //Print distances
     for (int i = 0; i < n; i++)
     {
         cout << "Distance from " << indexToCity[0]
              << " to " <<  indexToCity[i] << " = " << dist[i] << endl;
+    }
+    cout << right;
+
+    //Print path
+    cout << "Final path: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << indexToCity[i];
+        if (i == n - 1)
+        {
+        	cout << " ";
+        }
+        else
+        {
+        	cout << ", ";
+        }
     }
     cout << right;
 
