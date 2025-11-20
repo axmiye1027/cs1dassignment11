@@ -100,3 +100,65 @@ void Graph::dijkstra(int start)
     cout << right;
 
 };
+
+/***************************************************************************
+ * mst
+ * -------------------------------------------------------------------------
+ * using Prim-Jarnik's code
+ *      start   - starting vertex
+ **************************************************************************/
+void Graph::mst(int start) {
+    /***********************************************************************
+     * INITIALIZE
+     **********************************************************************/
+    const int SIZE = adjacencyMatrix.size();        // number of cities
+
+    vector<bool> visited;                           // vertex visited
+    vector<int> orderVisit;                         // list of cities visited
+    priority_queue<pair<int, int>> unlocked;        // list of cities we can look at (weight, city)
+
+    /***********************************************************************
+     * Initalizing unlocked list
+     **********************************************************************/
+    unlocked.push({-1, start});
+    
+    while (!unlocked.empty()) {
+
+        /*******************************************************************
+         * 1. Get the smallest distance city
+         ******************************************************************/
+        int city = unlocked.top().second;       // city we are looking at
+
+        // Remove city from list
+        unlocked.pop();
+
+        /*******************************************************************
+         * 2. Check if smallest distance city is NOT visited
+         ******************************************************************/
+        if (visited[city] == false) {
+         
+            // Mark as visited
+            visited[city] = true;
+            // Add to list of visited cities
+            orderVisit.push_back(city);
+
+        } // END if (visited[city] == false)
+
+        /*******************************************************************
+         * Add adjacent cities to list of unlocked cities
+         ******************************************************************/
+        for (int i = 0; i < adjacencyMatrix[city].size(); i++) {
+
+            /***************************************************************
+             * Check if city NOT visited
+             **************************************************************/
+            if (visited[i] == false) {
+                // add to list of cities we can visit
+                unlocked.push({adjacencyMatrix[city][i], i});
+            } // END if (visited[i] == false)
+
+        } // END for (int i = 0; i < SIZE; i++)
+
+    } // END while (!unlocked.empty())
+
+} // END mst
