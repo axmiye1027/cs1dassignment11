@@ -11,7 +11,9 @@ int main()
 {
 	Graph g1;
 
-	g1.dijkstra(0);
+	//g1.dijkstra(0);
+
+	g1.mst(0);
 
 	return 0;
 }

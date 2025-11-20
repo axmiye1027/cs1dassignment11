@@ -22,6 +22,8 @@ class Graph
 public:
 	Graph();
 
+	void mst(int start);
+
 	void dijkstra(int start);
 
 private:
